@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //called when key is pressed in textbox
+            //keypress - The key is pressed down
+            $("#quantity").keypress(function (e) {
+                //if the letter is not digit then display error and don't type anything
+                //jQuery event.which Property - Return which keyboard key was pressed: Return which keyboard key was pressed:
+
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57))
+                {
+                    //display error message
+                    $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+Number: <input type="text" name="quantity" id="quantity" /> &nbsp;
+    <span id="errmsg"></span>
+</body>
+</html>

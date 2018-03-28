@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#submit").click(function()
+                {
+                var name = $("#name").val();
+                if(name==""||name==null)
+                {
+                    alert("name is empty.");
+                    return false;
+                }
+                var password = $("#pwd").val();
+                if (password == "" || password == null) {
+                    alert("password is empty.");
+                    return false;
+                }
+                var comment = $("#comment").val();
+                if (comment == "" || comment == null) {
+                    alert("comment is empty.");
+                    return false;
+                }
+                if ($('input[type=checkbox]:checked').length == 0) {
+                    alert("ERROR! Please select at least one checkbox");
+                    return false;
+                }
+                if ($('input[type=radio]:checked').length == 0) {
+                    alert("ERROR! Please select at least one radio button");
+                    return false;
+                }
+                var education = $("#education").val();
+                if (education == "none" ) {
+                    alert("education is empty.");
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <form name="myForm" action="" onsubmit="return validateForm()" method="get">
+    Name: <input type="text" name="fname" pattern="[a-zA-Z0-9]{4,10}" id="name"/><br>
+    Password: <input type="password" name="password" id="pwd" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{4,7}"/><br>
+    Comment: <textarea name="comment" rows="10" cols="20" id="comment"/></textarea></br>
+
+    Skill:
+    C<input type="checkbox" name="skill" value="C" />
+    C++<input type="checkbox" name="skill" value="C++" />
+    Java<input type="checkbox" name="skill" value="Java" /><br />
+
+    <p>How would you like your coffee?</p>
+    <input type="radio" name="coffee" value="cream">With cream<br>
+    <input type="radio" name="coffee" value="sugar">With sugar<br>
+
+    Education:
+    <select name="education" id="education">
+        <option value="none">None</option>
+        <option value="BE">BE</option>
+        <option value="ME">ME</option>
+    </select><br><br>
+    <input type="submit" value="Submit" id="submit" />
+    </form>
+</body>
+</html>
